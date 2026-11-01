@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101927">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GODIUS公告">
+<title>GODIUS 國際版中文公告</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0c1420;color:#ecf2fa;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;line-height:1.65}
+header{padding:32px 20px;background:linear-gradient(140deg,#263e55,#142333);border-bottom:1px solid #435269}
+main{max-width:800px;margin:auto;padding:22px 16px}
+h1{margin:0;font-size:30px;line-height:1.35}h2{font-size:20px;margin:0 0 12px}
+.sub{color:#b9c6d8}.gold{color:#e9bb66;font-weight:700;letter-spacing:2px}
+.card{background:#192638;border:1px solid #35475d;border-radius:16px;padding:20px;margin:18px 0}
+a{color:#92d0ff}button,input{font:inherit}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+button{color:#eaf0f8;background:#233349;border:1px solid #455970;padding:9px 15px;border-radius:10px}
+button.on{background:#bc9248;color:#101820;font-weight:bold}
+input{width:100%;padding:14px;background:#192638;color:white;border:1px solid #43566e;border-radius:10px}
+.tag{font-size:13px;color:#a7d6b1}.date{color:#aabbd0;font-size:14px}
+details{border-top:1px solid #35465d;padding-top:12px;margin-top:14px}
+summary{cursor:pointer;color:#98d3ff}
+li{margin:5px 0}footer{padding:25px;text-align:center;color:#a4b3c6;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<div class="gold">GODIUS INTERNATIONAL</div>
+<h1>GODIUS 國際版<br>繁體中文公告站</h1>
+<p class="sub">官方公告・維護更新・限時活動・英文原文</p>
+</header>
+<main>
+<div class="card">
+<b>最新官方消息</b>
+<p class="sub">本頁提供繁體中文公告摘要。以下活動資訊為先前整理的資料，請以官方最新公告為準。</p>
+<a href="https://steamcommunity.com/app/4559140/allnews/" target="_blank" rel="noopener">開啟 Steam 官方最新公告 ↗</a>
+</div>
+<nav>
+<button class="on" onclick="filterNews('all',this)">全部</button>
+<button onclick="filterNews('event',this)">🎃 活動</button>
+<button onclick="filterNews('update',this)">🛠 維護與修正</button>
+</nav>
+<input id="search" placeholder="搜尋公告，例如：南瓜王、傷害" oninput="searchNews()">
+<section id="news">
+<article class="card" data-kind="event">
+<div class="tag">🎃 萬聖節活動</div>
+<h2>南瓜王活動（2026）</h2>
+<div class="date">公告資料：2026/10/29</div>
+<p>活動期間：10 月 29 日至 11 月 19 日。</p>
+<p>南瓜王於週六、週日台灣時間晚上 9 點出現；指定地圖為非 PK 區域。</p>
+<ul>
+<li>單人傷害門檻：1,500</li>
+<li>隊伍總傷害門檻：5,000</li>
+<li>未達門檻參加獎：萬聖節糖果 ×2</li>
+<li>達標獎勵：糖果袋</li>
+</ul>
+<details><summary>展開 13 張地圖中文翻譯</summary>
+<ol>
+<li>露克蕾西亞沼澤（Lucretia Swamp）</li>
+<li>蘭帕斯沼澤（Lampas Swamp）</li>
+<li>卡爾維隆森林（Calviron Forest）</li>
+<li>甘利亞海岸（Gamria Coast）</li>
+<li>卡拉布里亞半島（Calabria Peninsula）</li>
+<li>賽夫平原（Saef Plains）</li>
+<li>夏德米姆森林（Shadmium Forest）</li>
+<li>狹窄沼澤（Narrow Swamp）</li>
+<li>拉布爾平原（Rable Plains）</li>
+<li>聖提霍爾盆地（Santihol Basin）</li>
+<li>內布拉達沙漠（Nebrada Desert）</li>
+<li>西部山脊山脈（Western Spine Mountains）</li>
+<li>東部山脊山脈（Eastern Spine Mountains）</li>
+</ol><p class="sub">中文名稱為參考翻譯，非官方譯名。</p></details>
+<p><a href="https://steamcommunity.com/app/4559140/allnews/" target="_blank" rel="noopener">查看官方公告原文 ↗</a></p>
+</article>
+<article class="card" data-kind="update">
+<div class="tag">🛠 官方維護資訊</div>
+<h2>最新維護與遊戲修正</h2>
+<p>這裡提供官方公告入口，方便核對維護時間、修正項目及版本變更。</p>
+<a href="https://steamcommunity.com/app/4559140/allnews/" target="_blank" rel="noopener">查看官方維護公告 ↗</a>
+</article>
+</section>
+<div id="empty" hidden class="card">沒有符合條件的公告。</div>
+</main>
+<footer>非官方繁體中文資訊站。本站目前採內建公告，尚未啟用自動同步或即時翻譯。</footer>
+<script>
+let kind='all';
+function filterNews(k,b){kind=k;document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');searchNews()}
+function searchNews(){const q=document.getElementById('search').value.trim().toLowerCase();let n=0;document.querySelectorAll('article[data-kind]').forEach(a=>{const yes=(kind==='all'||a.dataset.kind===kind)&&a.textContent.toLowerCase().includes(q);a.hidden=!yes;if(yes)n++});document.getElementById('empty').hidden=n>0}
+</script>
+</body></html>
